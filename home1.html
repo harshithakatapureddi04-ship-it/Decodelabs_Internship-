@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,41 +27,57 @@ header{
 
 nav{
     background:#34495e;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    gap:20px;
     padding:15px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin:15px;
+    font-weight:bold;
 }
 
-section{
+nav a:hover{
+    color:gold;
+}
+
+.hero{
     text-align:center;
-    padding:30px;
+    padding:40px;
 }
 
-img{
-    width:600px;
+.hero img{
+    width:700px;
     max-width:100%;
     border-radius:10px;
 }
 
 button{
-    margin-top:15px;
-    padding:10px 20px;
+    margin-top:20px;
+    padding:10px 15px;
     background:#3498db;
     color:white;
     border:none;
+    border-radius:5px;
     cursor:pointer;
+}
+
+.dark-btn{
+    background:#f39c12;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
 }
 
 footer{
     background:#2c3e50;
     color:white;
     text-align:center;
-    padding:10px;
+    padding:15px;
     margin-top:20px;
 }
 </style>
@@ -69,7 +86,8 @@ footer{
 <body>
 
 <header>
-<h1>Online Book Store</h1>
+<h1>📚 Online Book Store</h1>
+<p>Your Favorite Books in One Place</p>
 </header>
 
 <nav>
@@ -78,16 +96,29 @@ footer{
 <a href="login1.html">Login</a>
 <a href="books page.html">Books</a>
 <a href="contact1.html">Contact</a>
+
+<button class="dark-btn" onclick="toggleTheme()">
+🌙 Dark Mode
+</button>
 </nav>
 
-<section>
-<h2>Welcome to Our Book Store</h2>
+<section class="hero">
 
-<img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="Book Store">
+<h2 id="welcome">
+Welcome to Our Book Store
+</h2>
 
-<p id="message">Discover amazing books today!</p>
+<br>
 
-<button onclick="changeMessage()">Explore Books</button>
+<img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+alt="Book Store">
+
+<br>
+
+<button onclick="changeMessage()">
+Explore Books
+</button>
+
 </section>
 
 <footer>
@@ -96,8 +127,12 @@ footer{
 
 <script>
 function changeMessage(){
-    document.getElementById("message").innerHTML =
-    "📚 Thousands of books are waiting for you!";
+    document.getElementById("welcome").innerHTML =
+    "📚 Discover Your Next Favorite Book!";
+}
+
+function toggleTheme(){
+    document.body.classList.toggle("dark-mode");
 }
 </script>
 
