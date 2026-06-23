@@ -1,74 +1,223 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register</title>
+<title>Book Store - Register</title>
 
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-    font-family:Arial;
-    background:#ecf0f1;
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+}
+
+header{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    background:#34495e;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:gold;
 }
 
 .container{
     width:400px;
-    margin:50px auto;
+    max-width:90%;
+    margin:40px auto;
     background:white;
     padding:25px;
     border-radius:10px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.container h2{
+    text-align:center;
+    margin-bottom:20px;
 }
 
 input{
     width:100%;
-    padding:10px;
+    padding:12px;
     margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
 button{
     width:100%;
-    padding:10px;
+    padding:12px;
     background:#27ae60;
     color:white;
     border:none;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-h2,p{
-    text-align:center;
+button:hover{
+    background:#219150;
 }
+
+#strength{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+#message{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+
+.dark-btn{
+    width:auto;
+    padding:8px 12px;
+    background:#f39c12;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .container{
+    background:#1f1f1f;
+    color:white;
+}
+
+footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
 </style>
 </head>
 
 <body>
 
+<header>
+<h1>📚 Online Book Store</h1>
+</header>
+
+<nav>
+<a href="home.html">Home</a>
+<a href="register.html">Register</a>
+<a href="login.html">Login</a>
+<a href="books.html">Books</a>
+<a href="contact.html">Contact</a>
+
+<button class="dark-btn" onclick="toggleTheme()">
+🌙 Dark Mode
+</button>
+</nav>
+
 <div class="container">
 
-<h2>User Registration</h2>
+<h2>Create Account</h2>
 
 <form onsubmit="return registerUser()">
 
-<input type="text" placeholder="Full Name" required>
+<input
+type="text"
+placeholder="Full Name"
+required>
 
-<input type="email" placeholder="Email" required>
+<input
+type="email"
+placeholder="Email Address"
+required>
 
-<input type="password" placeholder="Password" required>
+<input
+type="password"
+id="password"
+placeholder="Create Password"
+onkeyup="checkPassword()"
+required>
 
-<button type="submit">Register</button>
+<p id="strength"></p>
+
+<button type="submit">
+Register
+</button>
 
 </form>
 
-<p id="result"></p>
+<p id="message"></p>
 
 </div>
 
+<footer>
+<p>© 2026 Online Book Store</p>
+</footer>
+
 <script>
+
+function checkPassword(){
+
+    let pass =
+    document.getElementById("password").value;
+
+    let strength =
+    document.getElementById("strength");
+
+    if(pass.length < 6){
+
+        strength.innerHTML =
+        "❌ Weak Password";
+
+        strength.style.color = "red";
+    }
+
+    else{
+
+        strength.innerHTML =
+        "✅ Strong Password";
+
+        strength.style.color = "green";
+    }
+}
+
 function registerUser(){
 
-document.getElementById("result").innerHTML=
-"✅ Registration Successful!";
+    document.getElementById("message").innerHTML =
+    "🎉 Registration Successful!";
 
-return false;
+    return false;
 }
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark-mode");
+}
+
 </script>
 
 </body>
